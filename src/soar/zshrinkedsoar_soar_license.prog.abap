@@ -52,7 +52,7 @@
 *   4. Install Shrinker via ZABAPGIT_STANDALONE to any package e.g. $shrinker
 *      - Version used: https://github.com/sandraros/shrinker/commit/f5174326db11e3e9ccadca9cdc0f6382932e920a
 *   5. Install Shrinked-SOAR via ZABAPGIT_STANDALONE to any package e.g. $shrinkedsoar
-*      - Version used: https://github.com/sandraros/shrinked-SOAR
+*      - Version used: https://github.com/sandraros/shrinked-SOAR/commit/7747d5910986ce04b5c605d3728bdd29fdd02841
 *   6. Run the program ZSHRINKEDSOAR_RUN_SHRINKER to shrink = copy all abap-soar
 *      to new objects of a new package, with all renames done automatically.
 *
