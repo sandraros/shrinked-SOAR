@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SUSO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOBJ>
+    <OBJCT>ZSHRISOARH</OBJCT>
+    <FIEL1>ZSHRISOARS</FIEL1>
+    <FIEL2>ZSHRISOARH</FIEL2>
+    <OCLSS>BC_A</OCLSS>
+   </TOBJ>
+   <TOBJT>
+    <LANGU>E</LANGU>
+    <OBJECT>ZSHRISOARH</OBJECT>
+    <TTEXT>SOAR - ABAP Hash Key</TTEXT>
+   </TOBJT>
+   <TOBJVORFLG>
+    <OBJCT>ZSHRISOARH</OBJCT>
+   </TOBJVORFLG>
+  </asx:values>
+ </asx:abap>
+</abapGit>
