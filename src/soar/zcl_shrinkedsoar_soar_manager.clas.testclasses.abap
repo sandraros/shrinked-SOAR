@@ -137,13 +137,13 @@ CLASS ltc_generate_subroutine_pool_2 IMPLEMENTATION.
             ( `INCLUDE zsoar_srpoo_forms.                                  ` )
             ( `CLASS lcl_test DEFINITION.                                  ` )
             ( `  PUBLIC SECTION.                                           ` )
-            ( `    INTERFACES zif_soar_manager_test.                       ` )
+            ( `    INTERFACES ZIF_SHRINKEDSOAR_SOAR_MGR_TEST.                       ` )
             ( `ENDCLASS.                                                   ` )
             ( `CLASS lcl_test IMPLEMENTATION.                              ` )
-            ( `  METHOD zif_soar_manager_test~create.                      ` )
+            ( `  METHOD ZIF_SHRINKEDSOAR_SOAR_MGR_TEST~create.                      ` )
             ( `    result = NEW lcl_test( ).                               ` )
             ( `  ENDMETHOD.                                                ` )
-            ( `  METHOD zif_soar_manager_test~square.                      ` )
+            ( `  METHOD ZIF_SHRINKEDSOAR_SOAR_MGR_TEST~square.                      ` )
             ( `    result = number ** 2.                                   ` )
             ( `  ENDMETHOD.                                                ` )
             ( `ENDCLASS.                                                   ` ) ).
@@ -169,7 +169,7 @@ CLASS ltc_generate_subroutine_pool_2 IMPLEMENTATION.
 
   METHOD create_object_absolute_type.
 
-    DATA(test) = CAST zif_soar_manager_test( manager->create_object( class_name  = 'LCL_TEST'
+    DATA(test) = CAST ZIF_SHRINKEDSOAR_SOAR_MGR_TEST( manager->create_object( class_name  = 'LCL_TEST'
                                                                      via_perform = abap_false ) ).
     cl_abap_unit_assert=>assert_bound( test ).
     cl_abap_unit_assert=>assert_equals( act = cl_abap_typedescr=>describe_by_object_ref( test )->absolute_name
@@ -184,7 +184,7 @@ CLASS ltc_generate_subroutine_pool_2 IMPLEMENTATION.
 
   METHOD create_object_perform.
 
-    DATA(test) = CAST zif_soar_manager_test( manager->create_object( class_name  = 'LCL_TEST'
+    DATA(test) = CAST ZIF_SHRINKEDSOAR_SOAR_MGR_TEST( manager->create_object( class_name  = 'LCL_TEST'
                                                                      via_perform = abap_true ) ).
     cl_abap_unit_assert=>assert_bound( test ).
     cl_abap_unit_assert=>assert_equals( act = cl_abap_typedescr=>describe_by_object_ref( test )->absolute_name
@@ -199,8 +199,8 @@ CLASS ltc_generate_subroutine_pool_2 IMPLEMENTATION.
 
   METHOD factory_method_absolute_type.
 
-    DATA(test) = CAST zif_soar_manager_test( manager->call_static_method( class_name    = 'LCL_TEST'
-                                                                          method_name   = 'ZIF_SOAR_MANAGER_TEST~CREATE'
+    DATA(test) = CAST ZIF_SHRINKEDSOAR_SOAR_MGR_TEST( manager->call_static_method( class_name    = 'LCL_TEST'
+                                                                          method_name   = 'ZIF_SHRINKEDSOAR_SOAR_MGR_TEST~CREATE'
                                                                           result_object = VALUE #( parameter_name = 'RESULT'
                                                                                                    bound_optional = abap_false )
                                                                           via_perform   = abap_false ) ).
@@ -217,8 +217,8 @@ CLASS ltc_generate_subroutine_pool_2 IMPLEMENTATION.
 
   METHOD factory_method_perform.
 
-    DATA(test) = CAST zif_soar_manager_test( manager->call_static_method( class_name    = 'LCL_TEST'
-                                                                          method_name   = 'ZIF_SOAR_MANAGER_TEST~CREATE'
+    DATA(test) = CAST ZIF_SHRINKEDSOAR_SOAR_MGR_TEST( manager->call_static_method( class_name    = 'LCL_TEST'
+                                                                          method_name   = 'ZIF_SHRINKEDSOAR_SOAR_MGR_TEST~CREATE'
                                                                           result_object = VALUE #( parameter_name = 'RESULT'
                                                                                                    bound_optional = abap_false )
                                                                           via_perform   = abap_true ) ).
@@ -283,7 +283,7 @@ CLASS ltc_instantiate_inhousedev IMPLEMENTATION.
 
   METHOD create_object_absolute_type.
 
-    DATA(test) = CAST zif_soar_manager_test( manager->create_object( class_name  = 'LCL_TEST'
+    DATA(test) = CAST ZIF_SHRINKEDSOAR_SOAR_MGR_TEST( manager->create_object( class_name  = 'LCL_TEST'
                                                                      via_perform = abap_false ) ).
     cl_abap_unit_assert=>assert_bound( test ).
 
@@ -298,7 +298,7 @@ CLASS ltc_instantiate_inhousedev IMPLEMENTATION.
 
   METHOD create_object_perform.
 
-    DATA(test) = CAST zif_soar_manager_test( manager->create_object( class_name  = 'LCL_TEST'
+    DATA(test) = CAST ZIF_SHRINKEDSOAR_SOAR_MGR_TEST( manager->create_object( class_name  = 'LCL_TEST'
                                                                      via_perform = abap_true ) ).
     cl_abap_unit_assert=>assert_bound( test ).
 
@@ -313,8 +313,8 @@ CLASS ltc_instantiate_inhousedev IMPLEMENTATION.
 
   METHOD factory_method_absolute_type.
 
-    DATA(test) = CAST zif_soar_manager_test( manager->call_static_method( class_name    = 'LCL_TEST'
-                                                                          method_name   = 'ZIF_SOAR_MANAGER_TEST~CREATE'
+    DATA(test) = CAST ZIF_SHRINKEDSOAR_SOAR_MGR_TEST( manager->call_static_method( class_name    = 'LCL_TEST'
+                                                                          method_name   = 'ZIF_SHRINKEDSOAR_SOAR_MGR_TEST~CREATE'
                                                                           result_object = VALUE #( parameter_name = 'RESULT'
                                                                                                    bound_optional = abap_false )
                                                                           via_perform   = abap_false ) ).
@@ -331,8 +331,8 @@ CLASS ltc_instantiate_inhousedev IMPLEMENTATION.
 
   METHOD factory_method_perform.
 
-    DATA(test) = CAST zif_soar_manager_test( manager->call_static_method( class_name    = 'LCL_TEST'
-                                                                          method_name   = 'ZIF_SOAR_MANAGER_TEST~CREATE'
+    DATA(test) = CAST ZIF_SHRINKEDSOAR_SOAR_MGR_TEST( manager->call_static_method( class_name    = 'LCL_TEST'
+                                                                          method_name   = 'ZIF_SHRINKEDSOAR_SOAR_MGR_TEST~CREATE'
                                                                           result_object = VALUE #( parameter_name = 'RESULT'
                                                                                                    bound_optional = abap_false )
                                                                           via_perform   = abap_true ) ).

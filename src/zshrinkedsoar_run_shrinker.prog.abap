@@ -39,6 +39,10 @@ SELECTION-SCREEN BEGIN OF LINE.
 SELECTION-SCREEN END OF LINE.
 
 
+* Create many objects with the same names:
+* (authorization field and object, domain, data element)
+* --------------------
+
 SELECTION-SCREEN COMMENT /1(80) t_eponym.
 
 SELECTION-SCREEN BEGIN OF LINE.
@@ -66,92 +70,6 @@ SELECTION-SCREEN BEGIN OF LINE.
 SELECTION-SCREEN END OF LINE.
 
 
-** Authorization fields
-** --------------------
-** ZSOAR_DATE
-** ZSOAR_HASH
-** ZSOAR_SRP
-*
-*SELECTION-SCREEN BEGIN OF LINE.
-*  SELECTION-SCREEN COMMENT (80) t_auth_1 VISIBLE LENGTH 63.
-*  SELECTION-SCREEN POSITION 65.
-*  PARAMETERS p_auth_1 TYPE xufield DEFAULT 'ZSHRISOARD'.
-*SELECTION-SCREEN END OF LINE.
-*
-*SELECTION-SCREEN BEGIN OF LINE.
-*  SELECTION-SCREEN COMMENT (80) t_auth_2 VISIBLE LENGTH 63.
-*  SELECTION-SCREEN POSITION 65.
-*  PARAMETERS p_auth_2 TYPE xufield DEFAULT 'ZSHRISOARH'.
-*SELECTION-SCREEN END OF LINE.
-*
-*SELECTION-SCREEN BEGIN OF LINE.
-*  SELECTION-SCREEN COMMENT (80) t_auth_3 VISIBLE LENGTH 63.
-*  SELECTION-SCREEN POSITION 65.
-*  PARAMETERS p_auth_3 TYPE xufield DEFAULT 'ZSHRISOARS'.
-*SELECTION-SCREEN END OF LINE.
-*
-*
-** authorization objects
-** --------------------
-** ZSOAR_DATE
-** ZSOAR_HASH
-*
-*SELECTION-SCREEN BEGIN OF LINE.
-*  SELECTION-SCREEN COMMENT (80) t_suso_1 VISIBLE LENGTH 63.
-*  SELECTION-SCREEN POSITION 65.
-*  PARAMETERS p_suso_1 TYPE xuobject DEFAULT 'ZSHRISOARD'.
-*SELECTION-SCREEN END OF LINE.
-*
-*SELECTION-SCREEN BEGIN OF LINE.
-*  SELECTION-SCREEN COMMENT (80) t_suso_2 VISIBLE LENGTH 63.
-*  SELECTION-SCREEN POSITION 65.
-*  PARAMETERS p_suso_2 TYPE xuobject DEFAULT 'ZSHRISOARH'.
-*SELECTION-SCREEN END OF LINE.
-*
-*
-** Domains
-** --------------------
-** ZSOAR_DATE
-** ZSOAR_HASH
-*
-*SELECTION-SCREEN BEGIN OF LINE.
-*  SELECTION-SCREEN COMMENT (80) t_doma_1 VISIBLE LENGTH 63.
-*  SELECTION-SCREEN POSITION 65.
-*  PARAMETERS p_doma_1 TYPE domname DEFAULT 'ZSHRISOARD'.
-*SELECTION-SCREEN END OF LINE.
-*
-*SELECTION-SCREEN BEGIN OF LINE.
-*  SELECTION-SCREEN COMMENT (80) t_doma_2 VISIBLE LENGTH 63.
-*  SELECTION-SCREEN POSITION 65.
-*  PARAMETERS p_doma_2 TYPE domname DEFAULT 'ZSHRISOARH'.
-*SELECTION-SCREEN END OF LINE.
-*
-*
-** Data elements
-** --------------------
-** ZSOAR_DATE
-** ZSOAR_HASH
-** ZSOAR_SRP
-*
-*SELECTION-SCREEN BEGIN OF LINE.
-*  SELECTION-SCREEN COMMENT (80) t_dtel_1 VISIBLE LENGTH 63.
-*  SELECTION-SCREEN POSITION 65.
-*  PARAMETERS p_dtel_1 TYPE rollname DEFAULT 'ZSHRISOARD'.
-*SELECTION-SCREEN END OF LINE.
-*
-*SELECTION-SCREEN BEGIN OF LINE.
-*  SELECTION-SCREEN COMMENT (80) t_dtel_2 VISIBLE LENGTH 63.
-*  SELECTION-SCREEN POSITION 65.
-*  PARAMETERS p_dtel_2 TYPE rollname DEFAULT 'ZSHRISOARH'.
-*SELECTION-SCREEN END OF LINE.
-*
-*SELECTION-SCREEN BEGIN OF LINE.
-*  SELECTION-SCREEN COMMENT (80) t_dtel_3 VISIBLE LENGTH 63.
-*  SELECTION-SCREEN POSITION 65.
-*  PARAMETERS p_dtel_3 TYPE rollname DEFAULT 'ZSHRISOARS'.
-*SELECTION-SCREEN END OF LINE.
-
-
 * tables
 * --------------------
 * ZSOAR_INHOUSEDEV
@@ -161,6 +79,7 @@ SELECTION-SCREEN BEGIN OF LINE.
   SELECTION-SCREEN POSITION 65.
   PARAMETERS p_tabl_1 TYPE tabname DEFAULT 'ZSHRISOAR_INHD'.
 SELECTION-SCREEN END OF LINE.
+
 
 * classes
 * --------------------
@@ -179,10 +98,12 @@ SELECTION-SCREEN BEGIN OF LINE.
   PARAMETERS p_clas_2 TYPE seoclsname DEFAULT 'ZCX_SHRINKEDSOAR_SOAR'.
 SELECTION-SCREEN END OF LINE.
 
+
 * interfaces
 * --------------------
 * ZIF_SOAR_MANAGER
 * ZIF_SOAR_PROVIDER
+* ZIF_SOAR_MANAGER_TEST
 
 SELECTION-SCREEN BEGIN OF LINE.
   SELECTION-SCREEN COMMENT (80) t_intf_1 VISIBLE LENGTH 63.
@@ -196,6 +117,12 @@ SELECTION-SCREEN BEGIN OF LINE.
   PARAMETERS p_intf_2 TYPE seoclsname DEFAULT 'ZIF_SHRINKEDSOAR_SOAR_PROVIDER'.
 SELECTION-SCREEN END OF LINE.
 
+SELECTION-SCREEN BEGIN OF LINE.
+  SELECTION-SCREEN COMMENT (80) t_intf_3 VISIBLE LENGTH 63.
+  SELECTION-SCREEN POSITION 65.
+  PARAMETERS p_intf_3 TYPE seoclsname DEFAULT 'ZIF_SHRINKEDSOAR_SOAR_MGR_TEST'.
+SELECTION-SCREEN END OF LINE.
+
 
 INITIALIZATION.
   t_frdevc = 'Package containing https://github/sandraros/abap-soar objects'(t12).
@@ -207,21 +134,12 @@ INITIALIZATION.
   t_hash   = '  - ZSOAR_HASH (authorization field and object, domain, data element)'(t23).
   t_srp    = '  - ZSOAR_SRP (authorization field)'(t24).
   t_srp_id = '  - ZSOAR_SRP_ID (data element)'(t25).
-*  t_auth_1 = 'Create authorization field as copy of ZSOAR_DATE'(t01).
-*  t_auth_2 = 'Create authorization field as copy of ZSOAR_HASH'(t02).
-*  t_auth_3 = 'Create authorization field as copy of ZSOAR_SRP'(t03).
-*  t_suso_1 = 'Create authorization object as copy of ZSOAR_DATE'(t04).
-*  t_suso_2 = 'Create authorization object as copy of ZSOAR_HASH'(t05).
-*  t_doma_1 = 'Create DDIC domain as copy of ZSOAR_DATE'(t13).
-*  t_doma_2 = 'Create DDIC domain field as copy of ZSOAR_HASH'(t14).
-*  t_dtel_1 = 'Create data element as copy of ZSOAR_DATE'(t15).
-*  t_dtel_2 = 'Create data element as copy of ZSOAR_HASH'(t16).
-*  t_dtel_3 = 'Create data element as copy of ZSOAR_SRP'(t17).
   t_tabl_1 = 'Create table as copy of ZSOAR_INHOUSEDEV'(t06).
   t_clas_1 = 'Create class as copy of ZCL_SOAR_MANAGER'(t07).
   t_clas_2 = 'Create class as copy of ZCX_SOAR'(t08).
   t_intf_1 = 'Create interface pool as copy of ZIF_SOAR_MANAGER'(t09).
   t_intf_2 = 'Create interface pool as copy of ZIF_SOAR_PROVIDER'(t10).
+  t_intf_3 = 'Create interface pool as copy of ZIF_SOAR_MANAGER_TEST'(t24).
 
 
 START-OF-SELECTION.
@@ -253,7 +171,7 @@ CLASS lcl_app DEFINITION
 
     DATA tabix_public_section TYPE i.
     DATA zip TYPE REF TO cl_abap_zip.
-    DATA objects TYPE zcl_shrinker=>ty_object_copies.
+    DATA objects TYPE zcl_shrinker_copy_objects=>ty_object_copies.
 
     METHODS main_2
       RAISING
@@ -277,24 +195,26 @@ CLASS lcl_app IMPLEMENTATION.
     "==============================================================================
 
     objects = VALUE #(
-        ( object = 'AUTH' source_obj_name = 'ZSOAR_DATE       ' target_obj_name = p_date )
-        ( object = 'AUTH' source_obj_name = 'ZSOAR_HASH       ' target_obj_name = p_hash )
-        ( object = 'AUTH' source_obj_name = 'ZSOAR_SRP        ' target_obj_name = p_srp )
-        ( object = 'SUSO' source_obj_name = 'ZSOAR_DATE       ' target_obj_name = p_date )
-        ( object = 'SUSO' source_obj_name = 'ZSOAR_HASH       ' target_obj_name = p_hash )
-        ( object = 'DOMA' source_obj_name = 'ZSOAR_DATE       ' target_obj_name = p_date )
-        ( object = 'DOMA' source_obj_name = 'ZSOAR_HASH       ' target_obj_name = p_hash )
-        ( object = 'DTEL' source_obj_name = 'ZSOAR_DATE       ' target_obj_name = p_date )
-        ( object = 'DTEL' source_obj_name = 'ZSOAR_HASH       ' target_obj_name = p_hash )
-        ( object = 'DTEL' source_obj_name = 'ZSOAR_SRP_ID     ' target_obj_name = p_srp_id )
-        ( object = 'TABL' source_obj_name = 'ZSOAR_INHOUSEDEV ' target_obj_name = p_tabl_1 )
-        ( object = 'CLAS' source_obj_name = 'ZCL_SOAR_MANAGER ' target_obj_name = p_clas_1 )
-        ( object = 'CLAS' source_obj_name = 'ZCX_SOAR         ' target_obj_name = p_clas_2 )
-        ( object = 'INTF' source_obj_name = 'ZIF_SOAR_MANAGER ' target_obj_name = p_intf_1 )
-        ( object = 'INTF' source_obj_name = 'ZIF_SOAR_PROVIDER' target_obj_name = p_intf_2 ) ).
+        ( object = 'AUTH' source_obj_name = 'ZSOAR_DATE            ' target_obj_name = p_date )
+        ( object = 'AUTH' source_obj_name = 'ZSOAR_HASH            ' target_obj_name = p_hash )
+        ( object = 'AUTH' source_obj_name = 'ZSOAR_SRP             ' target_obj_name = p_srp )
+        ( object = 'SUSO' source_obj_name = 'ZSOAR_DATE            ' target_obj_name = p_date )
+        ( object = 'SUSO' source_obj_name = 'ZSOAR_HASH            ' target_obj_name = p_hash )
+        ( object = 'DOMA' source_obj_name = 'ZSOAR_DATE            ' target_obj_name = p_date )
+        ( object = 'DOMA' source_obj_name = 'ZSOAR_HASH            ' target_obj_name = p_hash )
+        ( object = 'DTEL' source_obj_name = 'ZSOAR_DATE            ' target_obj_name = p_date )
+        ( object = 'DTEL' source_obj_name = 'ZSOAR_HASH            ' target_obj_name = p_hash )
+        ( object = 'DTEL' source_obj_name = 'ZSOAR_SRP_ID          ' target_obj_name = p_srp_id )
+        ( object = 'TABL' source_obj_name = 'ZSOAR_INHOUSEDEV      ' target_obj_name = p_tabl_1 )
+        ( object = 'CLAS' source_obj_name = 'ZCL_SOAR_MANAGER      ' target_obj_name = p_clas_1 )
+        ( object = 'CLAS' source_obj_name = 'ZCX_SOAR              ' target_obj_name = p_clas_2 )
+        ( object = 'INTF' source_obj_name = 'ZIF_SOAR_MANAGER      ' target_obj_name = p_intf_1 )
+        ( object = 'INTF' source_obj_name = 'ZIF_SOAR_PROVIDER     ' target_obj_name = p_intf_2 )
+        ( object = 'INTF' source_obj_name = 'ZIF_SOAR_MANAGER_TEST ' target_obj_name = p_intf_3 ) ).
 
 
-    DATA(soar_target) = zcl_shrinker=>copy_objects(
+    DATA(copy_objects) = zcl_shrinker_copy_objects=>create( ).
+    DATA(soar_target) = copy_objects->run(
                         source_package = p_frdevc
                         target_package = p_todevc
                         user_exit      = me

@@ -126,6 +126,12 @@
      <LENGTH>132</LENGTH>
     </item>
     <item>
+     <ID>I</ID>
+     <KEY>T24</KEY>
+     <ENTRY>Create interface pool as copy of ZIF_SOAR_MANAGER_TEST</ENTRY>
+     <LENGTH>108</LENGTH>
+    </item>
+    <item>
      <ID>R</ID>
      <ENTRY>Program to shrink https://github.com/sandraros/abap-soar</ENTRY>
      <LENGTH>56</LENGTH>
