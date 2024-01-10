@@ -116,7 +116,7 @@
     <item>
      <ID>I</ID>
      <KEY>T19</KEY>
-     <ENTRY>Transport request if the target package is transportable (optional)</ENTRY>
+     <ENTRY>Transport request if the target package is transportable (otherwise empty)</ENTRY>
      <LENGTH>98</LENGTH>
     </item>
     <item>
@@ -128,6 +128,12 @@
     <item>
      <ID>I</ID>
      <KEY>T24</KEY>
+     <ENTRY>  - ZSOAR_SRP (authorization field)</ENTRY>
+     <LENGTH>108</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>T26</KEY>
      <ENTRY>Create interface pool as copy of ZIF_SOAR_MANAGER_TEST</ENTRY>
      <LENGTH>108</LENGTH>
     </item>
