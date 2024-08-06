@@ -212,22 +212,25 @@ CLASS lcl_app IMPLEMENTATION.
     " Copy repository objects
     "==============================================================================
 
-    objects = VALUE #( ( object = 'AUTH' source_obj_name = 'ZSOAR_DATE            ' target_obj_name = p_date )
-                       ( object = 'AUTH' source_obj_name = 'ZSOAR_HASH            ' target_obj_name = p_hash )
-                       ( object = 'AUTH' source_obj_name = 'ZSOAR_SRP             ' target_obj_name = p_srp )
-                       ( object = 'SUSO' source_obj_name = 'ZSOAR_DATE            ' target_obj_name = p_date )
-                       ( object = 'SUSO' source_obj_name = 'ZSOAR_HASH            ' target_obj_name = p_hash )
-                       ( object = 'DOMA' source_obj_name = 'ZSOAR_DATE            ' target_obj_name = p_date )
-                       ( object = 'DOMA' source_obj_name = 'ZSOAR_HASH            ' target_obj_name = p_hash )
-                       ( object = 'DTEL' source_obj_name = 'ZSOAR_DATE            ' target_obj_name = p_date )
-                       ( object = 'DTEL' source_obj_name = 'ZSOAR_HASH            ' target_obj_name = p_hash )
-                       ( object = 'DTEL' source_obj_name = 'ZSOAR_SRP_ID          ' target_obj_name = p_srp_id )
-                       ( object = 'TABL' source_obj_name = 'ZSOAR_INHOUSEDEV      ' target_obj_name = p_tabl_1 )
-                       ( object = 'CLAS' source_obj_name = 'ZCL_SOAR_MANAGER      ' target_obj_name = p_clas_1 )
-                       ( object = 'CLAS' source_obj_name = 'ZCX_SOAR              ' target_obj_name = p_clas_2 )
-                       ( object = 'INTF' source_obj_name = 'ZIF_SOAR_MANAGER      ' target_obj_name = p_intf_1 )
-                       ( object = 'INTF' source_obj_name = 'ZIF_SOAR_PROVIDER     ' target_obj_name = p_intf_2 )
-                       ( object = 'INTF' source_obj_name = 'ZIF_SOAR_MANAGER_TEST ' target_obj_name = p_intf_3 ) ).
+    objects = VALUE #(
+        ( object = 'AUTH' source_obj_name = 'ZSOAR_DATE            ' target_obj_name = p_date )
+        ( object = 'AUTH' source_obj_name = 'ZSOAR_HASH            ' target_obj_name = p_hash )
+        ( object = 'AUTH' source_obj_name = 'ZSOAR_SRP             ' target_obj_name = p_srp )
+        ( object = 'SUSO' source_obj_name = 'ZSOAR_DATE            ' target_obj_name = p_date )
+        ( object = 'SUSO' source_obj_name = 'ZSOAR_HASH            ' target_obj_name = p_hash )
+        ( object = 'DOMA' source_obj_name = 'ZSOAR_DATE            ' target_obj_name = p_date )
+        ( object = 'DOMA' source_obj_name = 'ZSOAR_HASH            ' target_obj_name = p_hash )
+        ( object = 'DTEL' source_obj_name = 'ZSOAR_DATE            ' target_obj_name = p_date )
+        ( object = 'DTEL' source_obj_name = 'ZSOAR_HASH            ' target_obj_name = p_hash )
+        ( object = 'DTEL' source_obj_name = 'ZSOAR_SRP_ID          ' target_obj_name = p_srp_id )
+        ( object = 'TABL' source_obj_name = 'ZSOAR_INHOUSEDEV      ' target_obj_name = p_tabl_1 )
+        ( object = 'CLAS' source_obj_name = 'ZCL_SOAR_MANAGER      ' target_obj_name = p_clas_1 )
+        ( object = 'CLAS' source_obj_name = 'ZCX_SOAR              ' target_obj_name = p_clas_2 )
+        ( object = 'INTF' source_obj_name = 'ZIF_SOAR_MANAGER      ' target_obj_name = p_intf_1 )
+        ( object = 'INTF' source_obj_name = 'ZIF_SOAR_PROVIDER     ' target_obj_name = p_intf_2 )
+        ( LINES OF COND #( WHEN p_intf_3 IS NOT INITIAL
+                           THEN VALUE #(
+                               ( object = 'INTF' source_obj_name = 'ZIF_SOAR_MANAGER_TEST ' target_obj_name = p_intf_3 ) ) ) ) ).
 
     DATA(copy_objects) = zcl_shrinker_copy_objects=>create( ).
     DATA(soar_target) = copy_objects->run( source_package    = p_frdevc
